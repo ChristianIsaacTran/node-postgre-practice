@@ -1,5 +1,6 @@
 const express = require("express");
 const path = require("node:path");
+const userRouter = require("./routes/userRouter");
 
 const app = express();
 
@@ -11,6 +12,9 @@ app.use(express.static(staticAssetsPath));
 const viewsPath = path.join(__dirname, "views");
 app.set("views", viewsPath)
 app.set("view engine", "ejs");
+
+// setting root path to follow userRouter
+app.use("/", userRouter);
 
 // default port variable
 const PORT = process.env.PORT || 3000;
