@@ -13,6 +13,9 @@ const viewsPath = path.join(__dirname, "views");
 app.set("views", viewsPath)
 app.set("view engine", "ejs");
 
+// allows the reading of form data
+app.use(express.urlencoded({extended: true}));
+
 // setting root path to follow userRouter
 app.use("/", userRouter);
 

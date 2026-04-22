@@ -5,4 +5,13 @@ exports.getUserNames = (req, res) => {
     res.render("index", {title: "Username Display"});
 };
 
+// renders the form to input usernames into
+exports.getForm = (req, res) => {
+    res.render("new", {title: "Username Form"});
+};
 
+
+//
+exports.postForm = (req, res) => {
+    console.log("username to be saved: ", req.body.username);
+};

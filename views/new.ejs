@@ -7,6 +7,11 @@
     <title><%= title %></title>
 </head>
 <body>
-    <p>/new</p>
+    <h1>Username to Database Form</h1>
+    <form action="/new" method="POST">
+        <label for="username">Username to store into database: </label>
+        <input type="text" name="username" id="username" placeholder="username goes here...">
+        <button type="submit">Submit</button>
+    </form>
 </body>
 </html>
