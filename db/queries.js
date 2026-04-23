@@ -4,6 +4,10 @@ const pool = require("./pool");
 
 // gets all usernames from the usernames table in the database, then returns it
 async function getAllUsernames() {
+    /* 
+    pool.query returns a "result" object if the query was successful. 
+    "rows" is a variable from the result object that contains an array of the row data from the query.
+    */
     const {rows} = await pool.query("SELECT * FROM usernames");
     return rows;
 }

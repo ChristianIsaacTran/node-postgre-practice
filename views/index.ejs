@@ -9,6 +9,7 @@
 <body>
     <h1>Username Display from postgreSQL Database</h1>
     <p>/index</p>
+    <h3>Usernames: <%= usernames.map((user) => user.username).join(", ") %></h3>
     <a href="/new">Go to username form</a>
 </body>
 </html>

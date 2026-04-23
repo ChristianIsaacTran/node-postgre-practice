@@ -15,7 +15,7 @@ module.exports = new Pool({
     user: process.env.USER, //the database user/username. set in postGreSQL config
     database: process.env.DATABASE, // name of the database I want to connect to. In this lesson I made a db named "top_users" in postgreSQL
     password: process.env.PASSWORD, //password to sign into user to use database
-    port: process.env.DBPORT, // default postgreSQL port is 5432
+    port: process.env.DB_PORT, // default postgreSQL port is 5432
 });
 
 /*
