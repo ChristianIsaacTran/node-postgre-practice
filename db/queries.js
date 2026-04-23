@@ -1,24 +1,23 @@
-
 // importing the "Pool" object from pool.js that acts as a "pool of clients", which allows extended connections with the database
 const pool = require("./pool");
 
 // gets all usernames from the usernames table in the database, then returns it
 async function getAllUsernames() {
-    /* 
+  /* 
     pool.query returns a "result" object if the query was successful. 
-    "rows" is a variable from the result object that contains an array of the row data from the query.
+    "rows" is a variable from the result object that contains an array of the row data from the query. Structured like a .json file 
     */
-    const {rows} = await pool.query("SELECT * FROM usernames");
-    return rows;
+  const { rows } = await pool.query("SELECT * FROM usernames");
+
+  return rows;
 }
 
 // inserts the given username into the username column in the usernames table
 async function insertUsername(username) {
+  // this query uses postgreSQL "parameterized queries" which safely injects the SQL query with the provided parameter
+  await pool.query("INSERT INTO usernames (username) VALUES ($1)", [username]);
 
-    // this query uses postgreSQL "parameterized queries" which safely injects the SQL query with the provided parameter
-    await pool.query("INSERT INTO usernames (username) VALUES ($1)", [username]);
-
-    /*
+  /*
         parameterized queries: 
         - represented with a dollar sign and a numerical index of the array (non-zero index, so it starts with 1)
 
@@ -36,6 +35,6 @@ async function insertUsername(username) {
 }
 
 module.exports = {
-    getAllUsernames,
-    insertUsername
+  getAllUsernames,
+  insertUsername,
 };

@@ -43,3 +43,12 @@
 ex:
 
 "args":["--env-file=.env"]
+
+## extra assignment requirements:
+
+1. implement environment variables for db connection information (done)
+
+2. add search functionality via query parameters to index route. Should search database for
+   query parameter inputs. DON'T IMPLEMENT SEARCH LOGIC IN JAVASCRIPT, SEARCH SHOULD BE DONE IN SQL IN DATABASE QUERIES.
+
+3. add new route GET /delete that deletes all usernames from the database
