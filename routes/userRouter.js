@@ -9,6 +9,9 @@ userRouter.get("/", userController.getUserNames);
 // /new route that gets form for username input
 userRouter.get("/new", userController.getForm);
 
+// /new route that posts the form data to the database
+userRouter.post("/new", userController.postForm);
+
 
 module.exports = userRouter;
 
