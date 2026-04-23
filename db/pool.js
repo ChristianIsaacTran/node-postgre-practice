@@ -10,6 +10,7 @@ const { Pool } = require("pg");
     (FIX: I made them into environment variables inside my .env file because of password sensitivity)
 */
 
+// when passing in config options for pool, this will apply these connection configs to every client that the pool makes
 module.exports = new Pool({
     host: process.env.HOST, //the host or wherever the database is located (could be a domain or an ip address depending on where the db is hosted)
     user: process.env.USER, //the database user/username. set in postGreSQL config
