@@ -12,6 +12,21 @@ async function getAllUsernames() {
   return rows;
 }
 
+// gets all usernames from usernames table filtered based on given searchParam, then returns it
+async function getSearchedUsernames(searchParam) {
+  // uses the LIKE clause with the WHERE clause to filter column results in the username column from the usernames table
+  // remember that in the LIKE clause, percent signs are "wildcards" that match any number of characters and underscores match single character
+  const { rows } = await pool.query(
+    "SELECT * FROM usernames WHERE LOWER(username) LIKE LOWER($1)",
+    [`%${searchParam}%`],
+  );
+
+  // note: parameterized query treats $1 as a WHOLE SINGLE value, so the wildcards need to be passed with the value itself. It's not like a template string.
+  // note: also added LOWER() SQL function to make the query case-insensitive for easier searching.
+
+  return rows;
+}
+
 // inserts the given username into the username column in the usernames table
 async function insertUsername(username) {
   // this query uses postgreSQL "parameterized queries" which safely injects the SQL query with the provided parameter
@@ -36,5 +51,6 @@ async function insertUsername(username) {
 
 module.exports = {
   getAllUsernames,
+  getSearchedUsernames,
   insertUsername,
 };

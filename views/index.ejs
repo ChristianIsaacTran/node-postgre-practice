@@ -1,15 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/index.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/index.css" />
     <title><%= title %></title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Username Display from postgreSQL Database</h1>
     <p>/index</p>
     <h3>Usernames: <%= usernames.map((user) => user.username).join(", ") %></h3>
-    <a href="/new">Go to username form</a>
-</body>
+    <form action="/" method="GET">
+      <label for="search">Search username: </label>
+      <input type="text" id="search" name="search" />
+      <button type="submit">Submit</button>
+    </form>
+    <div class="nav-button-group">
+      <a href="/">Reset search</a>
+      <a href="/new">Go to add username form</a>
+    </div>
+  </body>
 </html>
