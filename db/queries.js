@@ -49,8 +49,16 @@ async function insertUsername(username) {
     */
 }
 
+async function deleteUsernames() {
+    // SQL delete all records inside the usernames table, WITHOUT dropping any columns or tables
+    await pool.query("DELETE FROM usernames");
+
+    // note: in SQL, DELETE doesn't need wildcard because it always operates on a row level unlike SELECT which selects columns.
+}
+
 module.exports = {
   getAllUsernames,
   getSearchedUsernames,
   insertUsername,
+  deleteUsernames,
 };
