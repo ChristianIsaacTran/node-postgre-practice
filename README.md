@@ -52,3 +52,15 @@ ex:
    query parameter inputs. DON'T IMPLEMENT SEARCH LOGIC IN JAVASCRIPT, SEARCH SHOULD BE DONE IN SQL IN DATABASE QUERIES. (done)
 
 3. add new route GET /delete that deletes all usernames from the database
+
+## notes to self:
+
+- In pg (node-postgre library), the parameterized query treats the substitution variables as a WHOLE value. So the $1 will be treated as a whole value so I had to pass the wildcards with it as well to prevent the $1 being treated like a string.
+
+      ex:
+
+      // this did not work since surrounding $1 made it a string
+      pool.query("SELECT * FROM usernames WHERE username LIKE %$1%", [parameter]);
+
+      // had to pass the wildcards WITH the parameter value
+      pool.query("SELECT * FROM usernames WHERE username LIKE $1", [`%${parameter}%`]);
