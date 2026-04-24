@@ -64,3 +64,19 @@ ex:
 
       // had to pass the wildcards WITH the parameter value
       pool.query("SELECT * FROM usernames WHERE username LIKE $1", [`%${parameter}%`]);
+
+- In SQL, the DELETE operation doesn't use wildcard _ because it ALWAYS operates on a row level, unlike SELECT which uses _ to select columns,
+  I can omit the \* because its not involving columns only rows.
+
+## next step:
+
+- The assignment is having me go back to the node-mini-message-board project with the hosting service and setup a postgreSQL db and pg instead
+  of the static array I used back then.
+
+- It also wants me to launch a production db with the hosting service and use it's connection information to connect to their database (probably through URI).
+
+- The table in the database should be named "messages" and should be populated with a script/setup with a script.
+
+- Should add environment variables, pool object for pg, and implement the database functions into the mini-message-board project.
+
+- Also should have server side validation for user input. (express-validator).
